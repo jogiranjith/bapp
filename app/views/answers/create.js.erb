@@ -1,0 +1,4 @@
+var new_answer = $("<%= escape_javascript(render(:partial => @answer))%>").hide()
+$('#answer').prepend(new_answer);
+$('#answer_<%= @answer.id %>').fadeIn('slow');
+$('#new_answer')[0].reset();

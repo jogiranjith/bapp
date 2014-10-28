@@ -1,33 +1,218 @@
+  [1m[36m (197.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (138.7ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateQuestions (20141028190755)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141028190755"]]
+  [1m[35m (130.5ms)[0m  commit transaction
+Migrating to CreateAnswers (20141028190813)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "question_id" integer, "body" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141028190813"]]
+  [1m[35m (128.6ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
 
 
-Started GET "/" for 127.0.0.1 at 2014-10-29 00:14:06 +0530
+Started GET "/" for 127.0.0.1 at 2014-10-29 01:40:48 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/railties-4.1.5/lib/rails/templates/rails/welcome/index.html.erb (12.7ms)
+Completed 200 OK in 96ms (Views: 69.7ms | ActiveRecord: 0.0ms)
 
-ActiveRecord::PendingMigrationError (Migrations are pending; run 'bin/rake db:migrate RAILS_ENV=development' to resolve this issue.):
-  activerecord (4.0.1) lib/active_record/migration.rb:379:in `check_pending!'
-  activerecord (4.0.1) lib/active_record/migration.rb:366:in `call'
-  actionpack (4.0.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
-  activesupport (4.0.1) lib/active_support/callbacks.rb:373:in `_run__533391987__call__callbacks'
-  activesupport (4.0.1) lib/active_support/callbacks.rb:80:in `run_callbacks'
-  actionpack (4.0.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
-  actionpack (4.0.1) lib/action_dispatch/middleware/reloader.rb:64:in `call'
-  actionpack (4.0.1) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
-  actionpack (4.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
-  actionpack (4.0.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
-  railties (4.0.1) lib/rails/rack/logger.rb:38:in `call_app'
-  railties (4.0.1) lib/rails/rack/logger.rb:20:in `block in call'
-  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `block in tagged'
-  activesupport (4.0.1) lib/active_support/tagged_logging.rb:25:in `tagged'
-  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `tagged'
-  railties (4.0.1) lib/rails/rack/logger.rb:20:in `call'
-  actionpack (4.0.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+
+Started GET "/questions" for 127.0.0.1 at 2014-10-29 01:40:54 +0530
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 1005ms (Views: 944.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-10-29 01:40:55 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 01:40:55 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 01:40:55 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 01:40:55 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:40:55 +0530
+
+
+Started GET "/assets/questions.css?body=1" for 127.0.0.1 at 2014-10-29 01:40:55 +0530
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-10-29 01:40:55 +0530
+
+
+Started GET "/assets/questions.js?body=1" for 127.0.0.1 at 2014-10-29 01:40:55 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 01:40:55 +0530
+
+
+Started GET "/questions/new" for 127.0.0.1 at 2014-10-29 01:40:57 +0530
+Processing by QuestionsController#new as HTML
+  Rendered questions/_form.html.erb (130.7ms)
+  Rendered questions/new.html.erb within layouts/application (179.9ms)
+Completed 500 Internal Server Error in 186ms
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"questions"} missing required keys: [:id]):
+    2: 
+    3: <%= render 'form' %>
+    4: 
+    5: <%= link_to 'Back', question_path %>
+  app/views/questions/new.html.erb:5:in `_app_views_questions_new_html_erb___634090818_92893490'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.6ms)
+
+
+Started GET "/questions/new" for 127.0.0.1 at 2014-10-29 01:40:58 +0530
+Processing by QuestionsController#new as HTML
+  Rendered questions/_form.html.erb (3.2ms)
+  Rendered questions/new.html.erb within layouts/application (5.7ms)
+Completed 500 Internal Server Error in 10ms
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"questions"} missing required keys: [:id]):
+    2: 
+    3: <%= render 'form' %>
+    4: 
+    5: <%= link_to 'Back', question_path %>
+  app/views/questions/new.html.erb:5:in `_app_views_questions_new_html_erb___634090818_90654660'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (13.3ms)
+
+
+Started GET "/questions/new" for 127.0.0.1 at 2014-10-29 01:41:45 +0530
+Processing by QuestionsController#new as HTML
+  Rendered questions/_form.html.erb (3.1ms)
+  Rendered questions/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 70ms (Views: 68.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-10-29 01:41:46 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 01:41:46 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 01:41:46 +0530
+
+
+Started GET "/assets/questions.css?body=1" for 127.0.0.1 at 2014-10-29 01:41:46 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 01:41:46 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:41:46 +0530
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-10-29 01:41:46 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 01:41:46 +0530
+
+
+Started GET "/assets/questions.js?body=1" for 127.0.0.1 at 2014-10-29 01:41:46 +0530
+
+
+Started POST "/questions" for 127.0.0.1 at 2014-10-29 01:41:53 +0530
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6i/ykcKoxiyWYMrRirIo6tWSxC5PSNO16h1ZIMocbmM=", "question"=>{"title"=>"aldkjladlsa", "body"=>"oakd;sk;da"}, "commit"=>"Create Question"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "questions" ("body", "created_at", "title", "updated_at") VALUES (?, ?, ?, ?)  [["body", "oakd;sk;da"], ["created_at", "2014-10-28 20:11:53.840791"], ["title", "aldkjladlsa"], ["updated_at", "2014-10-28 20:11:53.840791"]]
+  [1m[36m (194.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/questions/1
+Completed 302 Found in 241ms (ActiveRecord: 195.0ms)
+
+
+Started GET "/questions/1" for 127.0.0.1 at 2014-10-29 01:41:54 +0530
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `set_question' for #<QuestionsController:0xadf0408>):
+  activesupport (4.1.5) lib/active_support/callbacks.rb:424:in `block in make_lambda'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:143:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:143:in `block in halting_and_conditional'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:229:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:229:in `block in halting'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:229:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:229:in `block in halting'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:86:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.5) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
   rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
   rack (1.5.2) lib/rack/runtime.rb:17:in `call'
-  activesupport (4.0.1) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
   rack (1.5.2) lib/rack/lock.rb:17:in `call'
-  actionpack (4.0.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
   rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
-  railties (4.0.1) lib/rails/engine.rb:511:in `call'
-  railties (4.0.1) lib/rails/application.rb:97:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
   rack (1.5.2) lib/rack/lock.rb:17:in `call'
   rack (1.5.2) lib/rack/content_length.rb:14:in `call'
   rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
@@ -36,289 +221,1040 @@ ActiveRecord::PendingMigrationError (Migrations are pending; run 'bin/rake db:mi
   /home/ranjith/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
 
 
-  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
-  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
-  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
-  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.6ms)
-  [1m[36m (151.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [1m[35m (133.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
-  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-Migrating to CreatePosts (20140331095003)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (32.0ms)
+
+
+Started POST "/questions" for 127.0.0.1 at 2014-10-29 01:42:55 +0530
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6i/ykcKoxiyWYMrRirIo6tWSxC5PSNO16h1ZIMocbmM=", "question"=>{"title"=>"aldkjladlsa", "body"=>"oakd;sk;da"}, "commit"=>"Create Question"}
   [1m[35m (0.1ms)[0m  begin transaction
-  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
-  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140331095003"]]
-  [1m[36m (134.6ms)[0m  [1mcommit transaction[0m
-Migrating to CreateComments (20140331095029)
-  [1m[35m (0.2ms)[0m  begin transaction
-  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "post_id" integer, "body" text, "created_at" datetime, "updated_at" datetime) [0m
-  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140331095029"]]
-  [1m[36m (135.0ms)[0m  [1mcommit transaction[0m
-  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "questions" ("body", "created_at", "title", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "oakd;sk;da"], ["created_at", "2014-10-28 20:12:55.787724"], ["title", "aldkjladlsa"], ["updated_at", "2014-10-28 20:12:55.787724"]]
+  [1m[35m (153.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/questions/2
+Completed 302 Found in 165ms (ActiveRecord: 154.0ms)
 
 
-Started GET "/" for 127.0.0.1 at 2014-10-29 00:14:46 +0530
-  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-Processing by Rails::WelcomeController#index as HTML
-  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/railties-4.0.1/lib/rails/templates/rails/welcome/index.html.erb (1.6ms)
-Completed 200 OK in 19ms (Views: 7.0ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/posts" for 127.0.0.1 at 2014-10-29 00:14:52 +0530
-Processing by PostsController#index as HTML
-  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
-  Rendered posts/index.html.erb within layouts/application (1.6ms)
-Completed 200 OK in 1141ms (Views: 1135.0ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
-
-
-Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
-
-
-Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
-
-
-Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
-
-
-Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
-
-
-Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
-
-
-Started GET "/assets/comments.js?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
-
-
-Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
-
-
-Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
-
-
-Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
-
-
-Started GET "/posts/new" for 127.0.0.1 at 2014-10-29 00:14:56 +0530
-Processing by PostsController#new as HTML
-Filter chain halted as :authenticate rendered or redirected
-Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
-
-
-Started GET "/posts/new" for 127.0.0.1 at 2014-10-29 00:15:04 +0530
-Processing by PostsController#new as HTML
-Filter chain halted as :authenticate rendered or redirected
-Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
-
-
-Started GET "/posts/new" for 127.0.0.1 at 2014-10-29 00:17:17 +0530
-  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-Processing by PostsController#new as HTML
-  Rendered posts/_form.html.erb (17.9ms)
-  Rendered posts/new.html.erb within layouts/application (21.6ms)
-Completed 200 OK in 81ms (Views: 64.9ms | ActiveRecord: 0.4ms)
-
-
-Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
-
-
-Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
-
-
-Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
-
-
-Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
-
-
-Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
-
-
-Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
-
-
-Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
-
-
-Started GET "/assets/comments.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
-
-
-Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
-
-
-Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
-
-
-Started POST "/posts" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
-Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MgYP0YP1K9VBnk/PldnioeXEt+DWUT2264mNkeevbGY=", "post"=>{"title"=>"hiii", "body"=>"kadlksjdlaks"}, "commit"=>"Create Post"}
-Filter chain halted as :authenticate rendered or redirected
-Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms)
-
-
-Started POST "/posts" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
-Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MgYP0YP1K9VBnk/PldnioeXEt+DWUT2264mNkeevbGY=", "post"=>{"title"=>"hiii", "body"=>"kadlksjdlaks"}, "commit"=>"Create Post"}
-  [1m[35m (0.1ms)[0m  begin transaction
-  [1m[36mSQL (28.0ms)[0m  [1mINSERT INTO "posts" ("body", "created_at", "title", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "kadlksjdlaks"], ["created_at", Tue, 28 Oct 2014 18:47:26 UTC +00:00], ["title", "hiii"], ["updated_at", Tue, 28 Oct 2014 18:47:26 UTC +00:00]]
-  [1m[35m (126.0ms)[0m  commit transaction
-Redirected to http://localhost:3000/posts/1
-Completed 302 Found in 165ms (ActiveRecord: 154.1ms)
-
-
-Started GET "/posts/1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
-Processing by PostsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
-  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+Started GET "/questions/2" for 127.0.0.1 at 2014-10-29 01:42:55 +0530
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mAnswer Load (0.2ms)[0m  SELECT "answers".* FROM "answers"  WHERE "answers"."question_id" = ?  [["question_id", 2]]
   Rendered collection (0.0ms)
-  Rendered posts/show.html.erb within layouts/application (53.4ms)
-Completed 200 OK in 66ms (Views: 61.4ms | ActiveRecord: 1.1ms)
+  Rendered questions/show.html.erb within layouts/application (101.7ms)
+Completed 500 Internal Server Error in 108ms
+
+ActionView::Template::Error (undefined method `edit_answer_path' for #<#<Class:0x9cc59d0>:0x9cc528c>):
+    22: <p><%= f.submit "Add Answer" %></p>
+    23: <% end %>
+    24: 
+    25: <%= link_to 'Edit', edit_answer_path(@question) %> |
+    26: <%= link_to 'Back', question_path %>
+  app/views/questions/show.html.erb:25:in `_app_views_questions_show_html_erb__349886604_82191120'
 
 
-Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (13.5ms)
 
 
-Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
-
-
-Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
-
-
-Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
-
-
-Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
-
-
-Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
-
-
-Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
-
-
-Started GET "/assets/comments.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
-
-
-Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
-
-
-Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
-
-
-Started POST "/posts/1/comments" for 127.0.0.1 at 2014-10-29 00:17:35 +0530
-Processing by CommentsController#create as JS
-  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"hello"}, "commit"=>"Add Comment", "post_id"=>"1"}
-  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
-  [1m[35m (0.1ms)[0m  begin transaction
-  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "comments" ("body", "created_at", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "hello"], ["created_at", Tue, 28 Oct 2014 18:47:35 UTC +00:00], ["post_id", 1], ["updated_at", Tue, 28 Oct 2014 18:47:35 UTC +00:00]]
-  [1m[35m (127.1ms)[0m  commit transaction
+Started POST "/questions" for 127.0.0.1 at 2014-10-29 01:43:19 +0530
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6i/ykcKoxiyWYMrRirIo6tWSxC5PSNO16h1ZIMocbmM=", "question"=>{"title"=>"aldkjladlsa", "body"=>"oakd;sk;da"}, "commit"=>"Create Question"}
   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
-  [1m[35m (0.1ms)[0m  commit transaction
-  Rendered comments/_comment.html.erb (1.0ms)
-  Rendered comments/create.js.erb (2.5ms)
-Completed 200 OK in 144ms (Views: 5.8ms | ActiveRecord: 128.3ms)
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "questions" ("body", "created_at", "title", "updated_at") VALUES (?, ?, ?, ?)  [["body", "oakd;sk;da"], ["created_at", "2014-10-28 20:13:19.496775"], ["title", "aldkjladlsa"], ["updated_at", "2014-10-28 20:13:19.496775"]]
+  [1m[36m (671.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/questions/3
+Completed 302 Found in 676ms (ActiveRecord: 671.6ms)
 
 
-Started POST "/posts/1/comments" for 127.0.0.1 at 2014-10-29 00:17:39 +0530
-Processing by CommentsController#create as JS
-  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"kaldlakdlksjd"}, "commit"=>"Add Comment", "post_id"=>"1"}
-  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Started GET "/questions/3" for 127.0.0.1 at 2014-10-29 01:43:20 +0530
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers"  WHERE "answers"."question_id" = ?[0m  [["question_id", 3]]
+  Rendered collection (0.0ms)
+  Rendered questions/show.html.erb within layouts/application (15.9ms)
+Completed 500 Internal Server Error in 20ms
+
+ActionView::Template::Error (undefined method `edit_answers_path' for #<#<Class:0x9cc59d0>:0xb10dbcc>):
+    22: <p><%= f.submit "Add Answer" %></p>
+    23: <% end %>
+    24: 
+    25: <%= link_to 'Edit', edit_answers_path(@question) %> |
+    26: <%= link_to 'Back', questions_path %>
+  app/views/questions/show.html.erb:25:in `_app_views_questions_show_html_erb__349886604_92824890'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (12.5ms)
+
+
+Started POST "/questions" for 127.0.0.1 at 2014-10-29 01:43:57 +0530
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6i/ykcKoxiyWYMrRirIo6tWSxC5PSNO16h1ZIMocbmM=", "question"=>{"title"=>"aldkjladlsa", "body"=>"oakd;sk;da"}, "commit"=>"Create Question"}
   [1m[35m (0.1ms)[0m  begin transaction
-  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("body", "created_at", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "kaldlakdlksjd"], ["created_at", Tue, 28 Oct 2014 18:47:39 UTC +00:00], ["post_id", 1], ["updated_at", Tue, 28 Oct 2014 18:47:39 UTC +00:00]]
-  [1m[35m (167.3ms)[0m  commit transaction
-  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
-  [1m[35m (0.1ms)[0m  commit transaction
-  Rendered comments/_comment.html.erb (0.6ms)
-  Rendered comments/create.js.erb (2.2ms)
-Completed 200 OK in 178ms (Views: 5.4ms | ActiveRecord: 168.1ms)
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "questions" ("body", "created_at", "title", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "oakd;sk;da"], ["created_at", "2014-10-28 20:13:57.500717"], ["title", "aldkjladlsa"], ["updated_at", "2014-10-28 20:13:57.500717"]]
+  [1m[35m (200.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/questions/4
+Completed 302 Found in 207ms (ActiveRecord: 201.1ms)
 
 
-Started POST "/posts/1/comments" for 127.0.0.1 at 2014-10-29 00:17:43 +0530
-Processing by CommentsController#create as JS
-  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"aldklksdlkdjlakjdlsl"}, "commit"=>"Add Comment", "post_id"=>"1"}
-  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
-  [1m[35m (0.1ms)[0m  begin transaction
-  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("body", "created_at", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "aldklksdlkdjlakjdlsl"], ["created_at", Tue, 28 Oct 2014 18:47:43 UTC +00:00], ["post_id", 1], ["updated_at", Tue, 28 Oct 2014 18:47:43 UTC +00:00]]
-  [1m[35m (334.8ms)[0m  commit transaction
+Started GET "/questions/4" for 127.0.0.1 at 2014-10-29 01:43:57 +0530
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers"  WHERE "answers"."question_id" = ?  [["question_id", 4]]
+  Rendered collection (0.0ms)
+  Rendered questions/show.html.erb within layouts/application (14.1ms)
+Completed 500 Internal Server Error in 19ms
+
+ActionView::Template::Error (undefined method `edit_questions_path' for #<#<Class:0x9cc59d0>:0xad408a0>):
+    22: <p><%= f.submit "Add Answer" %></p>
+    23: <% end %>
+    24: 
+    25: <%= link_to 'Edit', edit_questions_path(@question) %> |
+    26: <%= link_to 'Back', questions_path %>
+  app/views/questions/show.html.erb:25:in `_app_views_questions_show_html_erb__349886604_90791260'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (12.5ms)
+
+
+Started POST "/questions" for 127.0.0.1 at 2014-10-29 01:44:40 +0530
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6i/ykcKoxiyWYMrRirIo6tWSxC5PSNO16h1ZIMocbmM=", "question"=>{"title"=>"aldkjladlsa", "body"=>"oakd;sk;da"}, "commit"=>"Create Question"}
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "questions" ("body", "created_at", "title", "updated_at") VALUES (?, ?, ?, ?)  [["body", "oakd;sk;da"], ["created_at", "2014-10-28 20:14:40.446965"], ["title", "aldkjladlsa"], ["updated_at", "2014-10-28 20:14:40.446965"]]
+  [1m[36m (245.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/questions/5
+Completed 302 Found in 254ms (ActiveRecord: 246.4ms)
+
+
+Started GET "/questions/5" for 127.0.0.1 at 2014-10-29 01:44:40 +0530
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAnswer Load (0.5ms)[0m  [1mSELECT "answers".* FROM "answers"  WHERE "answers"."question_id" = ?[0m  [["question_id", 5]]
+  Rendered collection (0.0ms)
+  Rendered questions/show.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 66ms (Views: 64.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/questions.css?body=1" for 127.0.0.1 at 2014-10-29 01:44:40 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 01:44:40 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 01:44:40 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 01:44:40 +0530
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-10-29 01:44:40 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:44:40 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 01:44:40 +0530
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-10-29 01:44:40 +0530
+
+
+Started GET "/assets/questions.js?body=1" for 127.0.0.1 at 2014-10-29 01:44:40 +0530
+
+
+Started POST "/questions/5/answers" for 127.0.0.1 at 2014-10-29 01:44:56 +0530
+Processing by AnswersController#create as JS
+  Parameters: {"utf8"=>"✓", "answer"=>{"body"=>"heyy this is nice one :)"}, "commit"=>"Add Answer", "question_id"=>"5"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1  [["id", 5]]
   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
-  [1m[35m (0.1ms)[0m  commit transaction
-  Rendered comments/_comment.html.erb (0.6ms)
-  Rendered comments/create.js.erb (1.9ms)
-Completed 200 OK in 343ms (Views: 3.6ms | ActiveRecord: 335.4ms)
-
-
-Started POST "/posts/1/comments" for 127.0.0.1 at 2014-10-29 00:17:47 +0530
-Processing by CommentsController#create as JS
-  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"kaldlkdlakkdajlskl"}, "commit"=>"Add Comment", "post_id"=>"1"}
-  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("body", "created_at", "question_id", "updated_at") VALUES (?, ?, ?, ?)  [["body", "heyy this is nice one :)"], ["created_at", "2014-10-28 20:14:56.672072"], ["question_id", 5], ["updated_at", "2014-10-28 20:14:56.672072"]]
+  [1m[36m (129.3ms)[0m  [1mcommit transaction[0m
   [1m[35m (0.1ms)[0m  begin transaction
-  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("body", "created_at", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "kaldlkdlakkdajlskl"], ["created_at", Tue, 28 Oct 2014 18:47:47 UTC +00:00], ["post_id", 1], ["updated_at", Tue, 28 Oct 2014 18:47:47 UTC +00:00]]
-  [1m[35m (137.6ms)[0m  commit transaction
-  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
-  [1m[35m (0.1ms)[0m  commit transaction
-  Rendered comments/_comment.html.erb (0.8ms)
-  Rendered comments/create.js.erb (2.3ms)
-Completed 200 OK in 156ms (Views: 5.4ms | ActiveRecord: 138.4ms)
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  Rendered answers/_answer.html.erb (1.0ms)
+  Rendered answers/create.js.erb (2.6ms)
+Completed 200 OK in 157ms (Views: 4.9ms | ActiveRecord: 130.1ms)
 
 
-Started GET "/posts/1/comments" for 127.0.0.1 at 2014-10-29 00:20:19 +0530
-Processing by CommentsController#index as HTML
-  Parameters: {"post_id"=>"1"}
-  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments"[0m
-  Rendered comments/index.html.erb within layouts/application (21.7ms)
+Started POST "/questions/5/answers" for 127.0.0.1 at 2014-10-29 01:45:01 +0530
+Processing by AnswersController#create as JS
+  Parameters: {"utf8"=>"✓", "answer"=>{"body"=>"adkalkdlakldka"}, "commit"=>"Add Answer", "question_id"=>"5"}
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("body", "created_at", "question_id", "updated_at") VALUES (?, ?, ?, ?)  [["body", "adkalkdlakldka"], ["created_at", "2014-10-28 20:15:01.602951"], ["question_id", 5], ["updated_at", "2014-10-28 20:15:01.602951"]]
+  [1m[36m (138.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  Rendered answers/_answer.html.erb (0.6ms)
+  Rendered answers/create.js.erb (2.2ms)
+Completed 200 OK in 151ms (Views: 5.6ms | ActiveRecord: 139.5ms)
+
+
+Started POST "/questions/5/answers" for 127.0.0.1 at 2014-10-29 01:45:05 +0530
+Processing by AnswersController#create as JS
+  Parameters: {"utf8"=>"✓", "answer"=>{"body"=>"akdlkdalkdlakdlsk"}, "commit"=>"Add Answer", "question_id"=>"5"}
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "answers" ("body", "created_at", "question_id", "updated_at") VALUES (?, ?, ?, ?)  [["body", "akdlkdalkdlakdlsk"], ["created_at", "2014-10-28 20:15:05.870215"], ["question_id", 5], ["updated_at", "2014-10-28 20:15:05.870215"]]
+  [1m[36m (134.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  Rendered answers/_answer.html.erb (0.4ms)
+  Rendered answers/create.js.erb (1.2ms)
+Completed 200 OK in 143ms (Views: 2.9ms | ActiveRecord: 135.0ms)
+
+
+Started POST "/questions/5/answers" for 127.0.0.1 at 2014-10-29 01:45:10 +0530
+Processing by AnswersController#create as JS
+  Parameters: {"utf8"=>"✓", "answer"=>{"body"=>"kaldkslakmdlkaml"}, "commit"=>"Add Answer", "question_id"=>"5"}
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "answers" ("body", "created_at", "question_id", "updated_at") VALUES (?, ?, ?, ?)  [["body", "kaldkslakmdlkaml"], ["created_at", "2014-10-28 20:15:10.194902"], ["question_id", 5], ["updated_at", "2014-10-28 20:15:10.194902"]]
+  [1m[36m (128.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  Rendered answers/_answer.html.erb (0.4ms)
+  Rendered answers/create.js.erb (1.7ms)
+Completed 200 OK in 139ms (Views: 5.2ms | ActiveRecord: 128.8ms)
+
+
+Started GET "/questions/5/edit" for 127.0.0.1 at 2014-10-29 01:45:16 +0530
+Processing by QuestionsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered questions/_form.html.erb (2.3ms)
+  Rendered questions/edit.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 66ms (Views: 63.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/questions/5" for 127.0.0.1 at 2014-10-29 01:45:18 +0530
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers"  WHERE "answers"."question_id" = ?  [["question_id", 5]]
+  Rendered answers/_answer.html.erb (2.2ms)
+  Rendered questions/show.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 61ms (Views: 59.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/questions" for 127.0.0.1 at 2014-10-29 01:45:21 +0530
+Processing by QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions"[0m
+  Rendered questions/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 60ms (Views: 58.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/questions/5" for 127.0.0.1 at 2014-10-29 01:45:26 +0530
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers"  WHERE "answers"."question_id" = ?[0m  [["question_id", 5]]
+  Rendered answers/_answer.html.erb (2.4ms)
+  Rendered questions/show.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 67ms (Views: 64.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/questions/1" for 127.0.0.1 at 2014-10-29 01:45:29 +0530
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers"  WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  Rendered collection (0.0ms)
+  Rendered questions/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 58ms (Views: 55.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/questions/1/edit" for 127.0.0.1 at 2014-10-29 01:45:34 +0530
+Processing by QuestionsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered questions/_form.html.erb (4.0ms)
+  Rendered questions/edit.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 67ms (Views: 64.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/questions/1" for 127.0.0.1 at 2014-10-29 01:45:37 +0530
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mAnswer Load (0.2ms)[0m  SELECT "answers".* FROM "answers"  WHERE "answers"."question_id" = ?  [["question_id", 1]]
+  Rendered collection (0.0ms)
+  Rendered questions/show.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 61ms (Views: 58.1ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/questions/1" for 127.0.0.1 at 2014-10-29 01:45:42 +0530
+Processing by QuestionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"6i/ykcKoxiyWYMrRirIo6tWSxC5PSNO16h1ZIMocbmM=", "id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers"  WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "questions" WHERE "questions"."id" = ?  [["id", 1]]
+  [1m[36m (127.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/questions
+Completed 302 Found in 134ms (ActiveRecord: 128.2ms)
+
+
+Started GET "/questions" for 127.0.0.1 at 2014-10-29 01:45:42 +0530
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 65ms (Views: 62.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-10-29 01:45:42 +0530
+
+
+Started GET "/assets/questions.css?body=1" for 127.0.0.1 at 2014-10-29 01:45:42 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 01:45:42 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 01:45:42 +0530
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-10-29 01:45:42 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 01:45:42 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:45:42 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 01:45:42 +0530
+
+
+Started GET "/assets/questions.js?body=1" for 127.0.0.1 at 2014-10-29 01:45:42 +0530
+
+
+Started GET "/questions/1/answers" for 127.0.0.1 at 2014-10-29 01:46:01 +0530
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"1"}
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  Rendered answers/index.html.erb within layouts/application (14.8ms)
+Completed 500 Internal Server Error in 19ms
+
+ActionView::Template::Error (undefined method `answer_path' for #<#<Class:0xad0a854>:0xacfa1fc>):
+    16:       <tr>
+    17:         <td><%= answer.question_id %></td>
+    18:         <td><%= answer.body %></td>
+    19:         <td><%= link_to 'Show', answer %></td>
+    20:         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+    21:         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  app/views/answers/index.html.erb:19:in `block in _app_views_answers_index_html_erb__921704888_90686400'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb__921704888_90686400'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (12.9ms)
+
+
+Started GET "/answers" for 127.0.0.1 at 2014-10-29 01:46:32 +0530
+
+ActionController::RoutingError (No route matches [GET] "/answers"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ranjith/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ranjith/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ranjith/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (20.3ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (164.0ms)
+
+
+Started GET "/questions/answers" for 127.0.0.1 at 2014-10-29 01:46:41 +0530
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"answers"}
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 2ms
+
+ActiveRecord::RecordNotFound (Couldn't find Question with 'id'=answers):
+  app/controllers/questions_controller.rb:68:in `set_question'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.0ms)
+
+
+Started GET "/questions/1/answers" for 127.0.0.1 at 2014-10-29 01:46:56 +0530
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"1"}
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  Rendered answers/index.html.erb within layouts/application (18.7ms)
+Completed 500 Internal Server Error in 22ms
+
+ActionView::Template::Error (undefined method `answer_path' for #<#<Class:0xad0a854>:0xb221bd0>):
+    16:       <tr>
+    17:         <td><%= answer.question_id %></td>
+    18:         <td><%= answer.body %></td>
+    19:         <td><%= link_to 'Show', answer %></td>
+    20:         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+    21:         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  app/views/answers/index.html.erb:19:in `block in _app_views_answers_index_html_erb__921704888_90686400'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb__921704888_90686400'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (13.1ms)
+
+
+Started GET "/questions/1/answers" for 127.0.0.1 at 2014-10-29 01:47:43 +0530
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"1"}
+  [1m[35mAnswer Load (0.2ms)[0m  SELECT "answers".* FROM "answers"
+  Rendered answers/index.html.erb within layouts/application (19.0ms)
+Completed 500 Internal Server Error in 22ms
+
+ActionView::Template::Error (undefined local variable or method `answer_path' for #<#<Class:0xad0a854>:0xaf8d2c0>):
+    16:       <tr>
+    17:         <td><%= answer.question_id %></td>
+    18:         <td><%= answer.body %></td>
+    19:         <td><%= link_to 'Show', answer_path %></td>
+    20:         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+    21:         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  app/views/answers/index.html.erb:19:in `block in _app_views_answers_index_html_erb__921704888_92011510'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb__921704888_92011510'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (13.1ms)
+
+
+Started DELETE "/questions/2" for 127.0.0.1 at 2014-10-29 01:47:56 +0530
+Processing by QuestionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"6i/ykcKoxiyWYMrRirIo6tWSxC5PSNO16h1ZIMocbmM=", "id"=>"2"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers"  WHERE "answers"."question_id" = ?[0m  [["question_id", 2]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "questions" WHERE "questions"."id" = ?  [["id", 2]]
+  [1m[36m (144.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/questions
+Completed 302 Found in 149ms (ActiveRecord: 145.0ms)
+
+
+Started GET "/questions" for 127.0.0.1 at 2014-10-29 01:47:56 +0530
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 64ms (Views: 62.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-10-29 01:47:57 +0530
+
+
+Started GET "/assets/questions.css?body=1" for 127.0.0.1 at 2014-10-29 01:47:57 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:57 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 01:47:57 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:57 +0530
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:57 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:57 +0530
+
+
+Started GET "/assets/questions.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:57 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:57 +0530
+
+
+Started GET "/questions/5" for 127.0.0.1 at 2014-10-29 01:47:58 +0530
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers"  WHERE "answers"."question_id" = ?  [["question_id", 5]]
+  Rendered answers/_answer.html.erb (3.4ms)
+  Rendered questions/show.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 69ms (Views: 66.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 01:48:09 +0530
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  Rendered answers/index.html.erb within layouts/application (19.4ms)
+Completed 500 Internal Server Error in 21ms
+
+ActionView::Template::Error (undefined local variable or method `answer_path' for #<#<Class:0xad0a854>:0xb2aaae8>):
+    16:       <tr>
+    17:         <td><%= answer.question_id %></td>
+    18:         <td><%= answer.body %></td>
+    19:         <td><%= link_to 'Show', answer_path %></td>
+    20:         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+    21:         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  app/views/answers/index.html.erb:19:in `block in _app_views_answers_index_html_erb__921704888_92011510'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb__921704888_92011510'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (12.7ms)
+
+
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 01:49:11 +0530
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[35mAnswer Load (0.2ms)[0m  SELECT "answers".* FROM "answers"
+  Rendered answers/index.html.erb within layouts/application (18.3ms)
+Completed 500 Internal Server Error in 21ms
+
+ActionView::Template::Error (undefined method `answer_path' for #<#<Class:0xad0a854>:0xb07299c>):
+    16:       <tr>
+    17:         <td><%= answer.question_id %></td>
+    18:         <td><%= answer.body %></td>
+    19:         <td><%= link_to 'Show', answer %></td>
+    20:         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+    21:         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  app/views/answers/index.html.erb:19:in `block in _app_views_answers_index_html_erb__921704888_92504270'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb__921704888_92504270'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (19.0ms)
+
+
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 01:49:58 +0530
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  Rendered answers/index.html.erb within layouts/application (19.5ms)
+Completed 500 Internal Server Error in 24ms
+
+ActionView::Template::Error (undefined method `answer_path' for #<#<Class:0xad0a854>:0xacc84b8>):
+    16:       <tr>
+    17:         <td><%= answer.question_id %></td>
+    18:         <td><%= answer.body %></td>
+    19:         <td><%= link_to 'Show', answer %></td>
+    20:         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+    21:         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  app/views/answers/index.html.erb:19:in `block in _app_views_answers_index_html_erb__921704888_90551020'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb__921704888_90551020'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (13.3ms)
+
+
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 01:49:59 +0530
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[35mAnswer Load (0.3ms)[0m  SELECT "answers".* FROM "answers"
+  Rendered answers/index.html.erb within layouts/application (17.5ms)
+Completed 500 Internal Server Error in 21ms
+
+ActionView::Template::Error (undefined method `answer_path' for #<#<Class:0xad0a854>:0x9ddee5c>):
+    16:       <tr>
+    17:         <td><%= answer.question_id %></td>
+    18:         <td><%= answer.body %></td>
+    19:         <td><%= link_to 'Show', answer %></td>
+    20:         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+    21:         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  app/views/answers/index.html.erb:19:in `block in _app_views_answers_index_html_erb__921704888_90551020'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb__921704888_90551020'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (13.6ms)
+
+
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 01:50:32 +0530
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[36mAnswer Load (0.4ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  Rendered answers/index.html.erb within layouts/application (19.3ms)
+Completed 500 Internal Server Error in 23ms
+
+ActionView::Template::Error (undefined method `edit_answer_path' for #<#<Class:0xad0a854>:0xb242060>):
+    17:         <td><%= answer.question_id %></td>
+    18:         <td><%= answer.body %></td>
+    19:         
+    20:         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+    21:         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+    23:     <% end %>
+  app/views/answers/index.html.erb:20:in `block in _app_views_answers_index_html_erb__921704888_93456030'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb__921704888_93456030'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (13.7ms)
+
+
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 01:50:52 +0530
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[35mAnswer Load (0.3ms)[0m  SELECT "answers".* FROM "answers"
+  Rendered answers/index.html.erb within layouts/application (18.5ms)
+Completed 500 Internal Server Error in 22ms
+
+ActionView::Template::Error (undefined method `answer_path' for #<#<Class:0xad0a854>:0xafde47c>):
+    17:         <td><%= answer.question_id %></td>
+    18:         <td><%= answer.body %></td>
+    19: 
+    20:         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    21:       </tr>
+    22:     <% end %>
+    23:   </tbody>
+  app/views/answers/index.html.erb:20:in `block in _app_views_answers_index_html_erb__921704888_92203810'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb__921704888_92203810'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (13.8ms)
+
+
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 01:51:36 +0530
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  Rendered answers/index.html.erb within layouts/application (23.5ms)
 Completed 500 Internal Server Error in 26ms
 
-ActionView::Template::Error (undefined method `comment_path' for #<#<Class:0xb591a950>:0xb644c08>):
+ActionView::Template::Error (undefined local variable or method `new_answer_path' for #<#<Class:0xad0a854>:0xac7e994>):
+    25: 
+    26: <br>
+    27: 
+    28: <%= link_to 'New Answer', new_answer_path %>
+  app/views/answers/index.html.erb:28:in `_app_views_answers_index_html_erb__921704888_90434770'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (13.2ms)
+
+
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 01:51:49 +0530
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[35mAnswer Load (0.2ms)[0m  SELECT "answers".* FROM "answers"
+  Rendered answers/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 66ms (Views: 64.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-10-29 01:51:49 +0530
+
+
+Started GET "/assets/questions.css?body=1" for 127.0.0.1 at 2014-10-29 01:51:49 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 01:51:49 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 01:51:49 +0530
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-10-29 01:51:49 +0530
+
+
+Started GET "/assets/questions.js?body=1" for 127.0.0.1 at 2014-10-29 01:51:49 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:51:49 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 01:51:49 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 01:51:49 +0530
+
+
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 01:53:03 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[35mAnswer Load (0.2ms)[0m  SELECT "answers".* FROM "answers"
+  Rendered answers/index.html.erb within layouts/application (20.0ms)
+Completed 500 Internal Server Error in 43ms
+
+ActionView::Template::Error (undefined method `answer_path' for #<#<Class:0x8b84fe0>:0x8b7ee4c>):
     16:       <tr>
-    17:         <td><%= comment.post_id %></td>
-    18:         <td><%= comment.body %></td>
-    19:         <td><%= link_to 'Show', comment %></td>
-    20:         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    21:         <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    17:         <td><%= answer.question_id %></td>
+    18:         <td><%= answer.body %></td>
+    19:         <td><%= link_to 'Show', answer %></td>
+    20:         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+    21:         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     22:       </tr>
-  app/views/comments/index.html.erb:19:in `block in _app_views_comments_index_html_erb__1036707540_95560090'
-  app/views/comments/index.html.erb:15:in `_app_views_comments_index_html_erb__1036707540_95560090'
+  app/views/answers/index.html.erb:19:in `block in _app_views_answers_index_html_erb__164358045_72756060'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb__164358045_72756060'
 
 
-  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
-  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
-  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.4ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (13.2ms)
 
 
-Started GET "/posts/1/comments/a" for 127.0.0.1 at 2014-10-29 00:20:38 +0530
-Processing by CommentsController#show as HTML
-  Parameters: {"post_id"=>"1", "id"=>"a"}
-  [1m[35mComment Load (0.9ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1  [["id", "a"]]
-Completed 404 Not Found in 3ms
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 01:56:30 +0530
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[36mAnswer Load (0.7ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  Rendered answers/index.html.erb within layouts/application (15.2ms)
+Completed 500 Internal Server Error in 19ms
 
-ActiveRecord::RecordNotFound (Couldn't find Comment with id=a):
-  app/controllers/comments_controller.rb:69:in `set_comment'
+ActionView::Template::Error (undefined method `answer_path' for #<#<Class:0x8b84fe0>:0xa43736c>):
+    16:       <tr>
+    17:         <td><%= answer.question_id %></td>
+    18:         <td><%=  answer.body %></td>
+    19:         <td><%= link_to 'Show', answer %></td>
+    20:         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+    21:         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  app/views/answers/index.html.erb:19:in `block in _app_views_answers_index_html_erb__164358045_86092090'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb__164358045_86092090'
 
 
-  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
-  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
-  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
-  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.7ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (12.4ms)
 
 
-Started GET "/posts/1/comments/1" for 127.0.0.1 at 2014-10-29 00:20:42 +0530
-Processing by CommentsController#show as HTML
-  Parameters: {"post_id"=>"1", "id"=>"1"}
-  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1[0m  [["id", "1"]]
-  Rendered comments/show.html.erb within layouts/application (13.2ms)
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 01:58:16 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[35mAnswer Load (0.3ms)[0m  SELECT "answers".* FROM "answers"
+  Rendered answers/index.html.erb within layouts/application (19.2ms)
+Completed 500 Internal Server Error in 40ms
+
+ActionView::Template::Error (undefined local variable or method `question_answer' for #<#<Class:0xa1ce198>:0xa1cc690>):
+    16:       <tr>
+    17:         <td><%= answer.question_id %></td>
+    18:         <td><%=  answer.body %></td>
+    19:         <td><%= link_to 'Show', question_answer %></td>
+    20:         <td><%= link_to 'Edit', edit_question_answer_path(answer) %></td>
+    21:         <td><%= link_to 'Destroy', question_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  app/views/answers/index.html.erb:19:in `block in _app_views_answers_index_html_erb___969738087_84418680'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb___969738087_84418680'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (12.4ms)
+
+
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 02:00:25 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[35mAnswer Load (0.2ms)[0m  SELECT "answers".* FROM "answers"
+  Rendered answers/index.html.erb within layouts/application (19.7ms)
+Completed 500 Internal Server Error in 42ms
+
+ActionView::Template::Error (undefined local variable or method `question_answer' for #<#<Class:0x9f16748>:0x9f1495c>):
+    16:       <tr>
+    17:         <td><%= answer_1.question_id %></td>
+    18:         <td><%=  answer_1.body %></td>
+    19:         <td><%= link_to 'Show',  question_answer %></td>
+    20:         <td><%= link_to 'Edit', edit_question_answer_path(answer) %></td>
+    21:         <td><%= link_to 'Destroy', question_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  app/views/answers/index.html.erb:19:in `block in _app_views_answers_index_html_erb___29081455_82958470'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb___29081455_82958470'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (12.5ms)
+
+
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 02:00:27 +0530
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  Rendered answers/index.html.erb within layouts/application (14.1ms)
 Completed 500 Internal Server Error in 16ms
 
-ActionView::Template::Error (undefined method `edit_comment_path' for #<#<Class:0xb591a950>:0xb30bde8>):
-    10:   <%= @comment.body %>
-    11: </p>
-    12: 
-    13: <%= link_to 'Edit', edit_comment_path(@comment) %> |
-    14: <%= link_to 'Back', comments_path %>
-  app/views/comments/show.html.erb:13:in `_app_views_comments_show_html_erb___981884209_93870280'
+ActionView::Template::Error (undefined local variable or method `question_answer' for #<#<Class:0x9f16748>:0xb7d0694>):
+    16:       <tr>
+    17:         <td><%= answer_1.question_id %></td>
+    18:         <td><%=  answer_1.body %></td>
+    19:         <td><%= link_to 'Show',  question_answer %></td>
+    20:         <td><%= link_to 'Edit', edit_question_answer_path(answer) %></td>
+    21:         <td><%= link_to 'Destroy', question_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  app/views/answers/index.html.erb:19:in `block in _app_views_answers_index_html_erb___29081455_82958470'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb___29081455_82958470'
 
 
-  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
-  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
-  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.6ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (12.2ms)
+
+
+Started GET "/questions/5answers" for 127.0.0.1 at 2014-10-29 02:00:35 +0530
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"5answers"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions"  WHERE "questions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers"  WHERE "answers"."question_id" = ?[0m  [["question_id", 5]]
+  Rendered answers/_answer.html.erb (6.8ms)
+  Rendered questions/show.html.erb within layouts/application (34.9ms)
+Completed 200 OK in 143ms (Views: 130.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-10-29 02:00:35 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 02:00:35 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 02:00:35 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 02:00:35 +0530
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-10-29 02:00:35 +0530
+
+
+Started GET "/assets/questions.css?body=1" for 127.0.0.1 at 2014-10-29 02:00:35 +0530
+
+
+Started GET "/assets/questions.js?body=1" for 127.0.0.1 at 2014-10-29 02:00:35 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 02:00:35 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 02:00:35 +0530
+
+
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 02:00:41 +0530
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[35mAnswer Load (0.4ms)[0m  SELECT "answers".* FROM "answers"
+  Rendered answers/index.html.erb within layouts/application (15.2ms)
+Completed 500 Internal Server Error in 19ms
+
+ActionView::Template::Error (undefined local variable or method `question_answer' for #<#<Class:0x9f16748>:0xa72fd08>):
+    16:       <tr>
+    17:         <td><%= answer_1.question_id %></td>
+    18:         <td><%=  answer_1.body %></td>
+    19:         <td><%= link_to 'Show',  question_answer %></td>
+    20:         <td><%= link_to 'Edit', edit_question_answer_path(answer) %></td>
+    21:         <td><%= link_to 'Destroy', question_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  app/views/answers/index.html.erb:19:in `block in _app_views_answers_index_html_erb___29081455_82958470'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb___29081455_82958470'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (12.5ms)
+
+
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 02:03:59 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[35mAnswer Load (0.2ms)[0m  SELECT "answers".* FROM "answers"
+  Rendered answers/index.html.erb within layouts/application (25.3ms)
+Completed 500 Internal Server Error in 47ms
+
+ActionView::Template::Error (undefined local variable or method `answer' for #<#<Class:0x9dad0dc>:0x9d96e40>):
+    16:       <tr>
+    17:         <td><%= answer_1.question_id %></td>
+    18:         <td><%=  answer_1.body %></td>
+    19:         <td><%= link_to 'Show',  answer %></td>
+    20:         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+    21:         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  app/views/answers/index.html.erb:19:in `block in _app_views_answers_index_html_erb__1060450410_81673950'
+  app/views/answers/index.html.erb:15:in `_app_views_answers_index_html_erb__1060450410_81673950'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (13.4ms)
+
+
+Started GET "/questions/5/answers" for 127.0.0.1 at 2014-10-29 02:04:27 +0530
+Processing by AnswersController#index as HTML
+  Parameters: {"question_id"=>"5"}
+  [1m[36mAnswer Load (0.3ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  Rendered answers/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 92ms (Views: 90.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/answers.css?body=1" for 127.0.0.1 at 2014-10-29 02:04:27 +0530
+
+
+Started GET "/assets/questions.css?body=1" for 127.0.0.1 at 2014-10-29 02:04:27 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 02:04:27 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 02:04:27 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 02:04:27 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 02:04:27 +0530
+
+
+Started GET "/assets/answers.js?body=1" for 127.0.0.1 at 2014-10-29 02:04:27 +0530
+
+
+Started GET "/assets/questions.js?body=1" for 127.0.0.1 at 2014-10-29 02:04:27 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 02:04:27 +0530
+
+
+Started GET "/answers/1" for 127.0.0.1 at 2014-10-29 02:04:34 +0530
+Processing by AnswersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAnswer Load (0.3ms)[0m  SELECT  "answers".* FROM "answers"  WHERE "answers"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered answers/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 68ms (Views: 65.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/answers/1/edit" for 127.0.0.1 at 2014-10-29 02:04:37 +0530
+Processing by AnswersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT  "answers".* FROM "answers"  WHERE "answers"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered answers/_form.html.erb (30.6ms)
+  Rendered answers/edit.html.erb within layouts/application (34.6ms)
+Completed 200 OK in 95ms (Views: 93.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2014-10-29 02:04:48 +0530
+Processing by AnswersController#new as HTML
+  Rendered answers/_form.html.erb (3.3ms)
+  Rendered answers/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 57ms (Views: 56.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2014-10-29 02:05:08 +0530
+Processing by AnswersController#new as HTML
+  Rendered answers/_form.html.erb (3.5ms)
+  Rendered answers/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 64ms (Views: 63.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2014-10-29 02:05:26 +0530
+
+ActionController::RoutingError (No route matches [GET] "/posts"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ranjith/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ranjith/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ranjith/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (33.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2014-10-29 02:05:26 +0530
+
+ActionController::RoutingError (No route matches [GET] "/posts"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ranjith/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ranjith/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ranjith/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (29.6ms)

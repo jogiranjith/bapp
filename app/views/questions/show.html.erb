@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @question.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @question.body %>
+</p>
+
+<h2> Answer </h2>
+<div id="answer" >
+  <%= render :partial => @question.answers.reverse %>
+</div>
+
+<%= form_for([@question,Answer.new], remote: true) do |f| %>
+<p> <%= f.label :body, "New Answer" %> <br/>
+<%= f.text_area :body  %>
+</p>
+<p><%= f.submit "Add Answer" %></p>
+<% end %>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>

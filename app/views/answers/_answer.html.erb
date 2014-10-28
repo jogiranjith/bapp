@@ -1,0 +1,6 @@
+<%= div_for answer do %> 
+<p>
+<strong> Posted <%= time_ago_in_words(answer.created_at)  %></stong> <br/>
+<%= h(answer.body)  %>
+</p>
+<% end %>
