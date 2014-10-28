@@ -1,0 +1,324 @@
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-29 00:14:06 +0530
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'bin/rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.1) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.1) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.1) lib/active_support/callbacks.rb:373:in `_run__533391987__call__callbacks'
+  activesupport (4.0.1) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.1) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.1) lib/rails/engine.rb:511:in `call'
+  railties (4.0.1) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ranjith/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ranjith/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ranjith/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.6ms)
+  [1m[36m (151.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (133.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreatePosts (20140331095003)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140331095003"]]
+  [1m[36m (134.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateComments (20140331095029)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "post_id" integer, "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140331095029"]]
+  [1m[36m (135.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-29 00:14:46 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/railties-4.0.1/lib/rails/templates/rails/welcome/index.html.erb (1.6ms)
+Completed 200 OK in 19ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2014-10-29 00:14:52 +0530
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 1141ms (Views: 1135.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
+
+
+Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
+
+
+Started GET "/assets/comments.js?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 00:14:53 +0530
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2014-10-29 00:14:56 +0530
+Processing by PostsController#new as HTML
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2014-10-29 00:15:04 +0530
+Processing by PostsController#new as HTML
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2014-10-29 00:17:17 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (17.9ms)
+  Rendered posts/new.html.erb within layouts/application (21.6ms)
+Completed 200 OK in 81ms (Views: 64.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
+
+
+Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
+
+
+Started GET "/assets/comments.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:18 +0530
+
+
+Started POST "/posts" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MgYP0YP1K9VBnk/PldnioeXEt+DWUT2264mNkeevbGY=", "post"=>{"title"=>"hiii", "body"=>"kadlksjdlaks"}, "commit"=>"Create Post"}
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MgYP0YP1K9VBnk/PldnioeXEt+DWUT2264mNkeevbGY=", "post"=>{"title"=>"hiii", "body"=>"kadlksjdlaks"}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (28.0ms)[0m  [1mINSERT INTO "posts" ("body", "created_at", "title", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "kadlksjdlaks"], ["created_at", Tue, 28 Oct 2014 18:47:26 UTC +00:00], ["title", "hiii"], ["updated_at", Tue, 28 Oct 2014 18:47:26 UTC +00:00]]
+  [1m[35m (126.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 165ms (ActiveRecord: 154.1ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered collection (0.0ms)
+  Rendered posts/show.html.erb within layouts/application (53.4ms)
+Completed 200 OK in 66ms (Views: 61.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
+
+
+Started GET "/assets/comments.css?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
+
+
+Started GET "/assets/comments.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 00:17:26 +0530
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2014-10-29 00:17:35 +0530
+Processing by CommentsController#create as JS
+  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"hello"}, "commit"=>"Add Comment", "post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "comments" ("body", "created_at", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "hello"], ["created_at", Tue, 28 Oct 2014 18:47:35 UTC +00:00], ["post_id", 1], ["updated_at", Tue, 28 Oct 2014 18:47:35 UTC +00:00]]
+  [1m[35m (127.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  Rendered comments/_comment.html.erb (1.0ms)
+  Rendered comments/create.js.erb (2.5ms)
+Completed 200 OK in 144ms (Views: 5.8ms | ActiveRecord: 128.3ms)
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2014-10-29 00:17:39 +0530
+Processing by CommentsController#create as JS
+  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"kaldlakdlksjd"}, "commit"=>"Add Comment", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("body", "created_at", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "kaldlakdlksjd"], ["created_at", Tue, 28 Oct 2014 18:47:39 UTC +00:00], ["post_id", 1], ["updated_at", Tue, 28 Oct 2014 18:47:39 UTC +00:00]]
+  [1m[35m (167.3ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  Rendered comments/_comment.html.erb (0.6ms)
+  Rendered comments/create.js.erb (2.2ms)
+Completed 200 OK in 178ms (Views: 5.4ms | ActiveRecord: 168.1ms)
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2014-10-29 00:17:43 +0530
+Processing by CommentsController#create as JS
+  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"aldklksdlkdjlakjdlsl"}, "commit"=>"Add Comment", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("body", "created_at", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "aldklksdlkdjlakjdlsl"], ["created_at", Tue, 28 Oct 2014 18:47:43 UTC +00:00], ["post_id", 1], ["updated_at", Tue, 28 Oct 2014 18:47:43 UTC +00:00]]
+  [1m[35m (334.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  Rendered comments/_comment.html.erb (0.6ms)
+  Rendered comments/create.js.erb (1.9ms)
+Completed 200 OK in 343ms (Views: 3.6ms | ActiveRecord: 335.4ms)
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2014-10-29 00:17:47 +0530
+Processing by CommentsController#create as JS
+  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"kaldlkdlakkdajlskl"}, "commit"=>"Add Comment", "post_id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("body", "created_at", "post_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "kaldlkdlakkdajlskl"], ["created_at", Tue, 28 Oct 2014 18:47:47 UTC +00:00], ["post_id", 1], ["updated_at", Tue, 28 Oct 2014 18:47:47 UTC +00:00]]
+  [1m[35m (137.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  Rendered comments/_comment.html.erb (0.8ms)
+  Rendered comments/create.js.erb (2.3ms)
+Completed 200 OK in 156ms (Views: 5.4ms | ActiveRecord: 138.4ms)
+
+
+Started GET "/posts/1/comments" for 127.0.0.1 at 2014-10-29 00:20:19 +0530
+Processing by CommentsController#index as HTML
+  Parameters: {"post_id"=>"1"}
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments"[0m
+  Rendered comments/index.html.erb within layouts/application (21.7ms)
+Completed 500 Internal Server Error in 26ms
+
+ActionView::Template::Error (undefined method `comment_path' for #<#<Class:0xb591a950>:0xb644c08>):
+    16:       <tr>
+    17:         <td><%= comment.post_id %></td>
+    18:         <td><%= comment.body %></td>
+    19:         <td><%= link_to 'Show', comment %></td>
+    20:         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+    21:         <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  app/views/comments/index.html.erb:19:in `block in _app_views_comments_index_html_erb__1036707540_95560090'
+  app/views/comments/index.html.erb:15:in `_app_views_comments_index_html_erb__1036707540_95560090'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.4ms)
+
+
+Started GET "/posts/1/comments/a" for 127.0.0.1 at 2014-10-29 00:20:38 +0530
+Processing by CommentsController#show as HTML
+  Parameters: {"post_id"=>"1", "id"=>"a"}
+  [1m[35mComment Load (0.9ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1  [["id", "a"]]
+Completed 404 Not Found in 3ms
+
+ActiveRecord::RecordNotFound (Couldn't find Comment with id=a):
+  app/controllers/comments_controller.rb:69:in `set_comment'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.7ms)
+
+
+Started GET "/posts/1/comments/1" for 127.0.0.1 at 2014-10-29 00:20:42 +0530
+Processing by CommentsController#show as HTML
+  Parameters: {"post_id"=>"1", "id"=>"1"}
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered comments/show.html.erb within layouts/application (13.2ms)
+Completed 500 Internal Server Error in 16ms
+
+ActionView::Template::Error (undefined method `edit_comment_path' for #<#<Class:0xb591a950>:0xb30bde8>):
+    10:   <%= @comment.body %>
+    11: </p>
+    12: 
+    13: <%= link_to 'Edit', edit_comment_path(@comment) %> |
+    14: <%= link_to 'Back', comments_path %>
+  app/views/comments/show.html.erb:13:in `_app_views_comments_show_html_erb___981884209_93870280'
+
+
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /home/ranjith/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.6ms)
